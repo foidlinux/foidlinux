@@ -1,0 +1,465 @@
+FOID LICENSE
+Version 1.0, August 2026
+
+Copyright (c) 2026 FOID Linux Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+1. The above copyright notice and this permission notice shall be included in
+   all copies or substantial portions of the Software.
+
+2. THE FOID CLAUSE: If you fork this project, do not call it "FOID" or use
+   the FOID logo/name for your fork. Make your own name. Be independent.
+
+3. THE NO-BLOAT CLAUSE: This Software may not be used in any project,
+   distribution, or system that depends on systemd as its init system.
+
+   For example, if your OS boots with `systemctl`, `journalctl`, or any binary
+   from the systemd project residing in /lib/systemd/, you are in violation.
+   If your init is /sbin/init and it is a symlink to systemd, you are in
+   violation. If your boot process takes longer than 5 seconds because something
+   is "waiting for network", you are in violation.
+
+   RAM-INCOMPATIBLE SOFTWARE includes, but is not limited to: GNOME (all versions
+   past 2.x), KDE Plasma, Electron-based applications (Discord, Spotify, VS Code,
+   Slack, any "app" that ships a 200MB tarball containing an entire Chromium),
+   Docker (unless running rootless with a single Alpine container), Snap,
+   Flatpak (unless the runtime is smaller than 50MB), and any process whose
+   RSS exceeds 512MB while idle. If your browser uses more RAM than the Linux
+   kernel, you are in violation. If you run `htop` and the first screen is
+   already full, you are in violation.
+
+   If you need an init system, use something that respects your RAM.
+
+4. THE FEDORA CLAUSE: Do not mention "Fedora" in connection with this
+   Software. We do not talk about Fedora. We do not think about Fedora.
+   This clause exists because we said so.
+
+5. THE VOID CLAUSE: If you are migrating from Void Linux, you may skip
+   clauses 3 and 4 for a grace period of 30 days. We understand. Take your time.
+
+6. THE ARCH CLAUSE: Users of Arch Linux are permitted to mention they use
+   Arch, but only once per conversation. Further mentions constitute spam and
+   void this license. We know. You told us.
+
+7. THE NEOVIM CLAUSE: If you use Neovim, you are contractually obligated to
+   tell everyone about your init.lua at least once. If you use Emacs, you must
+   defend your choice in a 500-word essay. If you use nano, you are valid and
+   protected under this license.
+
+8. THE WAYLAND CLAUSE: If this Software is running under X11 in the year 2026
+   or later, the user must provide a written apology to their GPU. Exceptions
+   are made for users of dwm, because they have suffered enough.
+
+9. THE COMPILER CLAUSE: This Software may be compiled with GCC, Clang, or
+   TCC. Compilation with proprietary compilers is permitted but frowned upon.
+   If you manage to compile this with a compiler you wrote yourself in a
+   weekend, you automatically become a maintainer.
+
+10. THE TERMINAL CLAUSE: The user agrees that `ls` is a valid file manager,
+    `curl | sh` is a valid package manager, and `cat` is a valid pager. Anyone
+    who says otherwise may be ignored.
+
+11. THE DOTFILES CLAUSE: Every user of this Software must maintain a public
+    GitHub repository named dotfiles containing at least one symlink script
+    that breaks on any machine other than their own. Failure to maintain such
+    a repository shall result in immediate revocation of ricing privileges.
+
+12. THE RICING CLAUSE: The user acknowledges that spending 6 hours configuring
+    a status bar is a valid use of time. However, if the resulting rice uses
+    more than 16MB of RAM, the user must publicly admit that their aesthetic
+    choices have consequences.
+
+13. THE DISTROHOPPING CLAUSE: If the user has installed more than 3 Linux
+    distributions in the past calendar month, they are required to pick one
+    and delete the others. Virtual machines count. Live USBs count. That one
+    partition you forgot about counts. Pick one. We are waiting.
+
+14. THE GENTOO CLAUSE: Gentoo users are exempt from all performance-related
+    clauses on the grounds that they have already punished themselves enough.
+    However, they must agree that CFLAGS="-O3 -march=native" does not actually
+    make Firefox faster, and they must say this out loud at least once.
+
+15. THE NIX CLAUSE: NixOS users may use this Software, but they must explain
+    how flakes work to at least one confused Ubuntu user before the end of the
+    fiscal year. If they cannot explain it, they must admit that they too are
+    confused, which is legally binding.
+
+16. THE DOCKER CLAUSE: Running this Software inside a Docker container is
+    permitted only if the Dockerfile is smaller than 10 lines and does not use
+    Alpine (because that would be too easy). If your Docker image has 47 layers,
+    you must write a 3-page apology to the inode table.
+
+17. THE README CLAUSE: Any project derived from this Software must include a
+    README.md that starts with the words "FOID-inspired" and contains at least
+    one ASCII art logo. The logo must be hand-drawn; generators are prohibited
+    and punishable by forced use of Comic Sans.
+
+18. THE ISSUE CLAUSE: Before opening an issue, the user must run `rm -rf /`
+    in a VM to ensure the problem is reproducible. If the user is unwilling
+    to do this, they may instead provide a minimal working example, but we
+    prefer the VM method because it builds character.
+
+19. THE PR CLAUSE: All pull requests must be accompanied by a haiku describing
+    the change. The haiku must follow the 5-7-5 syllable structure. Pull
+    requests that fix typos are exempt, but only if the typo was genuinely
+    funny.
+
+20. THE FORMATTING CLAUSE: This Software may be indented with tabs or spaces,
+    but the user must pick one and defend their choice in a flame war at
+    least once in their lifetime. Users who indent with 8 spaces are legally
+    classified as performance artists.
+
+21. THE LANGUAGE CLAUSE: This Software may be rewritten in any programming
+    language, provided the rewrite is justified by a 200-word manifesto posted
+    to Hacker News. Rewrites in Rust require only 50 words but must include
+    the phrase "zero-cost abstractions" at least twice.
+
+22. THE FONT CLAUSE: The user agrees that bitmap fonts are underrated, that
+    JetBrains Mono is acceptable, and that using a font with ligatures in a
+    terminal is a personal choice that we respect but do not understand.
+    Users of Comic Sans are reported to the authorities.
+
+23. THE WALLPAPER CLAUSE: The user's desktop wallpaper must not contain a
+    photograph of a mountain, a forest, or an anime character unless the user
+    can prove they have visited that mountain, planted a tree in that forest,
+    or legally changed their name to match that character.
+
+24. THE SLEEP CLAUSE: The user acknowledges that compiling a Linux kernel at
+    3:47 AM is a valid lifestyle choice. However, if the user falls asleep
+    during compilation and the laptop overheats, the user must buy the
+    contributors a new laptop. This is non-negotiable.
+
+25. THE MOUSE CLAUSE: Use of a computer mouse is permitted but discouraged.
+    If the user must use a mouse, they are required to feel a mild sense of
+    shame. Trackball users are exempt because they have already made their
+    choice and we respect commitment.
+
+26. THE KEYBOARD CLAUSE: The user must be able to touch-type at least 40 WPM
+    or admit that they are "still learning" for the 7th consecutive year.
+    Users of QWERTY, Dvorak, Colemak, and Workman are all valid. Users of
+    custom firmware on their mechanical keyboard must disclose their switch
+    type within 30 seconds of being asked.
+
+27. THE SWAP CLAUSE: The user agrees that swap partitions are a conspiracy
+    designed to slow down SSDs. If the user has more than 8GB of RAM and still
+    uses a swap file, they must explain why to a rubber duck for no less than
+    15 minutes.
+
+28. THE LOG CLAUSE: The user shall not fill /var/log with 40GB of journal
+    entries. If the user requires logging, they may use `echo` redirected to
+    a file. If that file exceeds 1MB, the user must rotate it manually while
+    contemplating the impermanence of all things.
+
+29. THE UPTIME CLAUSE: If the user's uptime exceeds 365 days, they are
+    required to reboot immediately and then lie about how long it was.
+    Alternatively, they may apply security patches like a responsible adult.
+
+30. THE MAN PAGE CLAUSE: The user agrees to read at least one man page per
+    week. If the user Googles "how to [basic command]" instead of running
+    `man [basic command]`, they must write the missing man page themselves
+    and submit it upstream.
+
+31. THE ALIAS CLAUSE: The user may not alias `rm` to `rm -i`. If they do,
+    they must also alias `cd` to `echo "you are already home"` and `ls` to
+    `echo "just use find"`. Fair is fair.
+
+32. THE SUDO CLAUSE: The user must type their password correctly on the first
+    try at least 60% of the time. If their accuracy falls below this threshold,
+    they are required to switch to `doas` and never look back.
+
+33. THE BACKUP CLAUSE: The user acknowledges that they have no backups. They
+    have always had no backups. They will continue to have no backups until
+    the day after a catastrophic failure, at which point they will consider
+    making backups and then not do it.
+
+34. THE WIFI CLAUSE: If the user's Wi-Fi stops working after a kernel update,
+    they are prohibited from blaming the distro. They must instead write a
+    polite email to the firmware maintainer and then switch to Ethernet forever.
+
+35. THE BLUETOOTH CLAUSE: Bluetooth is permitted but only for headphones.
+    If the user attempts to use Bluetooth for file transfer, they must first
+    explain why they are not using `rsync` over SSH like a civilized person.
+
+36. THE BATTERY CLAUSE: If the user's laptop battery health drops below 70%,
+    they are required to acknowledge that they have been leaving it plugged in
+    at 100% for three years and that this was, in retrospect, a poor decision.
+
+37. THE MONITOR CLAUSE: The user agrees that one monitor is enough. Two
+    monitors are acceptable. Three monitors suggest a problem. Four monitors
+    require a written explanation to the contributors. Ultrawide users are
+    valid but suspicious.
+
+38. THE NOTIFICATION CLAUSE: The user shall not enable desktop notifications
+    for Discord, Slack, or any application that exists solely to interrupt
+    workflow. If the user requires notifications, they may use `dunst` with
+    a 10-second timeout and a sense of regret.
+
+39. THE SCREENSHOT CLAUSE: Any screenshot of this Software shared to r/unixporn
+    must include at least one terminal window showing `neofetch` or `fastfetch`
+    output. Screenshots showing only a wallpaper will be met with mild
+    disappointment.
+
+40. THE PACKAGE COUNT CLAUSE: The user agrees that having fewer than 500
+    installed packages is a valid flex. Having more than 2000 packages is not
+    a flex; it is a cry for help. The user must audit their dependencies and
+    delete at least one package they do not recognize.
+
+41. THE KERNEL CLAUSE: The user may compile their own kernel, but they must
+    admit that they only changed three options and that two of them were
+    mistakes. If the user claims they need a custom kernel for "performance",
+    they must provide benchmark data or remain silent.
+
+42. THE MODULE CLAUSE: If the user runs `lsmod` and sees more than 50 modules,
+    they are required to research what each one does. If they cannot explain
+    `nf_conntrack`, they must blacklist it and deal with the consequences.
+
+43. THE FIREWALL CLAUSE: The user agrees that `iptables -F` is not a valid
+    troubleshooting step. If the user runs this command, they must immediately
+    disconnect from the internet and rethink their life choices.
+
+44. THE PASSWORD CLAUSE: The user's passwords must be at least 16 characters,
+    contain no dictionary words, and be stored in a password manager. If the
+    user writes passwords in a text file named `passwords.txt`, this license
+    self-destructs.
+
+45. THE SSH CLAUSE: The user must use key-based authentication. Password
+    authentication over SSH is permitted only if the password is "correcthorse
+    batterystaple" and the user is fully aware of the xkcd reference.
+
+46. THE PORT CLAUSE: The user agrees that port 22 is boring. If they must
+    change the SSH port, they should pick something memorable like 2222 or
+    something chaotic like 49152. Port 1337 is acceptable but cliché.
+
+47. THE DNS CLAUSE: The user must use a DNS server they can name. If they
+    are using their ISP's DNS because "it just works", they must look up what
+    DNS is and then switch to 9.9.9.9 or 1.1.1.1 out of spite.
+
+48. THE VPN CLAUSE: The user may use a VPN but must be able to explain what
+    a VPN actually does. If they say "it makes me anonymous", they must watch
+    a 20-minute YouTube video about how the internet works and then try again.
+
+49. THE TOR CLAUSE: Tor users are respected but must admit that they are
+    mostly using it to read Wikipedia articles that are blocked in their
+    country. This is valid and protected.
+
+50. THE IRC CLAUSE: The user agrees that IRC is not dead. If they claim it
+    is dead, they must join a channel, stay for 48 hours, and then apologize
+    to the people who have been there since 1998.
+
+51. THE MATRIX CLAUSE: Matrix users are permitted but must explain why they
+    need end-to-end encryption for a channel where the only messages are
+    "ping" and "pong".
+
+52. THE EMAIL CLAUSE: The user must check their email at least once per week.
+    If they have more than 1000 unread emails, they must declare email
+    bankruptcy and start over with a new address.
+
+53. THE CALENDAR CLAUSE: The user agrees that `cal` is a valid calendar
+    application. If they require a GUI calendar, they must admit that they
+    only use it to count down to the next kernel release.
+
+54. THE MUSIC CLAUSE: The user may listen to music while coding, but they
+    must not listen to lo-fi hip hop radio beats to relax/study to. That
+    channel is exhausted. Try dark ambient or nothing.
+
+55. THE COFFEE CLAUSE: The user agrees that coffee is a performance-enhancing
+    drug and that their dependency is neither a problem nor a solution. Tea
+    drinkers are valid but must stop pretending it is the same thing.
+
+56. THE ENERGY DRINK CLAUSE: Energy drinks are permitted only during kernel
+    panics and compiler errors. If the user drinks an energy drink while
+    reading documentation, they must question their time management skills.
+
+57. THE CHAIR CLAUSE: The user acknowledges that their chair is terrible
+    and that they should buy a better one. They will not buy a better one.
+    This is understood.
+
+58. THE DESK CLAUSE: The user's desk must contain at least one item that
+    serves no purpose. If everything on the desk is functional, the user is
+    suspected of being an alien and must provide proof of humanity.
+
+59. THE CABLE CLAUSE: The user agrees that cable management is a myth. If
+    they claim to have good cable management, they must post a photo of the
+    back of their desk. We all know what is back there. It is okay.
+
+60. THE RGB CLAUSE: RGB lighting is permitted but must be set to a single
+    color. Rainbow puke mode is prohibited unless the user is under 16 years
+    of age. If the user is over 30 and still uses rainbow mode, they must
+    explain their emotional state in writing.
+
+61. THE FAN CLAUSE: The user agrees that fan noise is white noise and that
+    a silent PC is suspicious. If the user's PC is completely silent, they
+    must check if it is still on.
+
+62. THE THERMAL CLAUSE: If the user's CPU exceeds 85°C, they are required to
+    clean their heatsink. They will not clean their heatsink. They will
+    instead install a new fan and hope for the best.
+
+63. THE GPU CLAUSE: NVIDIA users are permitted but must acknowledge that
+    they are in a complicated relationship. AMD users must stop talking about
+    how open the drivers are. Intel GPU users are supported and protected.
+
+64. THE DRIVER CLAUSE: If the user installs a proprietary driver, they must
+    whisper "I'm sorry, Richard" every time they boot. If they do not know
+    who Richard is, they must look it up and then whisper anyway.
+
+65. THE FIRMWARE CLAUSE: The user agrees that firmware blobs are a necessary
+    evil. They do not have to like them. They just have to accept them and
+    move on.
+
+66. THE BIOS CLAUSE: The user must enter their BIOS/UEFI settings at least
+    once per year. If they have never entered the BIOS, they must do so now
+    and then immediately leave because it is scary in there.
+
+67. THE BOOTLOADER CLAUSE: The user may use GRUB, systemd-boot (wait, no,
+    clause 3), Limine, or rEFInd. If they chainload more than three
+    bootloaders, they must explain why in a 12-step program.
+
+68. THE PARTITION CLAUSE: The user agrees that they have at least one
+    partition they forgot about. It is probably 8GB and labeled "old stuff".
+    They will never delete it. This is fine.
+
+69. THE FILESYSTEM CLAUSE: The user may use ext4, xfs, or btrfs. If they
+    use btrfs, they must admit that they only use it for snapshots and that
+    they have never actually restored from one. ZFS users are respected but
+    must stop talking about ARC.
+
+70. THE MOUNT CLAUSE: The user agrees that `mount` without arguments is a
+    valid way to spend 20 minutes reading about their own system. If they
+    use `findmnt` instead, they are advanced and slightly intimidating.
+
+71. THE SYMLINK CLAUSE: The user must have created at least one symlink
+    that points nowhere. If all their symlinks are valid, they are either
+    lying or have not lived enough.
+
+72. THE PERMISSION CLAUSE: The user agrees that `chmod 777` is never the
+    answer. If they run it anyway, they must wear a sign that says "I gave
+    up" for the remainder of the day.
+
+73. THE OWNERSHIP CLAUSE: If the user runs `chown -R root:root /` by
+    accident, they are required to reinstall and tell no one. This is a
+    binding secret.
+
+74. THE PIPE CLAUSE: The user agrees that `|` is the most powerful character
+    in computing. If they do not understand pipes, they must read the
+    manual and then write a sonnet about data flow.
+
+75. THE REGEX CLAUSE: The user may use regular expressions, but they must
+    admit that they had to look up the syntax. If they claim to know regex
+    by heart, they must write a parser for HTML using only regex and then
+    apologize to the Computer Science community.
+
+76. THE SED CLAUSE: The user agrees that `sed` is a valid text editor for
+    one-line changes. If they write a 400-character sed command, they must
+    rewrite it in Python and then question their life choices.
+
+77. THE AWK CLAUSE: AWK users are respected elders. If the user does not
+    know AWK, they are not required to learn it, but they must nod politely
+    when someone mentions it.
+
+78. THE PERL CLAUSE: Perl is not mentioned in this license. If you are
+    reading this, you are not using Perl. Good.
+
+79. THE PYTHON CLAUSE: Python is permitted for scripts under 100 lines.
+    If the script exceeds 100 lines, the user must rewrite it in Go, Rust,
+    or C, or admit that they enjoy dynamic typing more than they should.
+
+80. THE RUBY CLAUSE: Ruby users are valid but must explain what they are
+    doing in 2026. If the answer is "Jekyll", they are forgiven. If the
+    answer is "Rails", they must defend their stack in a public forum.
+
+81. THE JAVA CLAUSE: Java is not prohibited, but the user must acknowledge
+    that they are running a JVM to run a build tool to compile a program
+    that prints "Hello World" and that this is, technically, a choice.
+
+82. THE JAVASCRIPT CLAUSE: JavaScript is permitted only in the browser.
+    If the user runs JavaScript on the server, they must explain why they
+    need 400MB of node_modules to serve a static page.
+
+83. THE TYPESCRIPT CLAUSE: TypeScript users must admit that the types are
+    mostly `any` and that the `tsconfig.json` was copied from Stack Overflow.
+
+84. THE CSS CLAUSE: The user agrees that CSS is a puzzle and that centering
+    a div is the final boss. If they claim CSS is easy, they must center a
+    div vertically and horizontally without using flexbox or grid.
+
+85. THE HTML CLAUSE: The user agrees that HTML is a programming language
+    if they say it is. We will not argue. Life is too short.
+
+86. THE SQL CLAUSE: The user must write at least one SQL query per year
+    by hand. If they only use ORMs, they must look at the generated SQL
+    and feel a vague sense of unease.
+
+87. THE JSON CLAUSE: The user agrees that JSON is fine. XML users must
+    explain why they need closing tags for everything. YAML users must
+    admit that they have been burned by indentation at least once.
+
+88. THE TOML CLAUSE: TOML users are valid but must stop telling everyone
+    how readable it is. We have heard. It is readable. Thank you.
+
+89. THE GIT CLAUSE: The user agrees that `git push --force` is a war crime.
+    If they use it, they must notify their team in advance and then accept
+    that they are the villain now.
+
+90. THE COMMIT CLAUSE: Commit messages must be meaningful. "fix stuff" is
+    not meaningful. "asdf" is not meaningful. If the user cannot describe
+    the change in 50 characters, they must reconsider the change.
+
+91. THE BRANCH CLAUSE: The user may have as many local branches as they
+    want, but they must delete at least one per month. If they have 47
+    branches named "fix-thing-final-FOR-REAL-2", they must face judgment.
+
+92. THE MERGE CLAUSE: Merge commits are valid. Rebase is also valid. The
+    user must pick one and then argue about it online at least once. If they
+    do not care, they must pretend to care for 5 minutes.
+
+93. THE STASH CLAUSE: The user agrees that `git stash` is where code goes
+    to die. If they have stashes older than 6 months, they must delete them
+    and accept that they will never remember what "wip" meant.
+
+94. THE SUBMODULE CLAUSE: Git submodules are prohibited. If the user thinks
+    they need submodules, they need monorepo tooling. If they think they
+    need monorepo tooling, they need to simplify their project.
+
+95. THE TODO CLAUSE: The user must have at least one `TODO` comment in
+    their codebase that is over 2 years old. If all TODOs are resolved,
+    they are either lying or have achieved enlightenment.
+
+96. THE COMMENT CLAUSE: Comments are permitted but must not explain what the
+    code does. They must explain why the code exists. If the comment says
+    "increment i", the user must delete it and feel shame.
+
+97. THE DEBUG CLAUSE: The user agrees that `printf` debugging is a valid
+    strategy. If they use a debugger, they must admit that they only use
+    10% of its features and that the other 90% are witchcraft.
+
+98. THE STACK TRACE CLAUSE: When the user encounters a stack trace, they
+    must read it. All of it. Not just the first line. The answer is in
+    line 47 and they know it.
+
+99. THE RTFM CLAUSE: The user agrees that the answer is in the manual.
+    It is always in the manual. If they refuse to read the manual, they
+    must accept that their suffering is self-inflicted and that no one
+    feels sorry for them.
+
+100. If this Software saves you from systemd, you owe the contributors a beer
+     (or a coffee, or a thought — we are not picky).
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+FOID stands for Freedom, Open, Independent, Distributed.
+Use it wisely. Keep it minimal. No bloat. No systemd. No Fedora.

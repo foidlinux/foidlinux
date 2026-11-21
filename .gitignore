@@ -1,0 +1,8 @@
+/toolchain/
+/sources/
+/build/
+/out/
+/rootfs/
+*.iso
+*.part
+*.cpio.gz
