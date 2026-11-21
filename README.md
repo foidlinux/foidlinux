@@ -47,7 +47,7 @@ Log in as `root`; the password is empty (live system, no network services are en
 You need a Linux host with `base-devel`-style tools, `curl`, `xz`, `bzip2`, `perl`, `squashfs-tools`, `libisoburn`, `cpio`, `limine` and (for testing) `qemu`.
 
 ```sh
-git clone <this repo> ~/foid && cd ~/foid
+git clone https://github.com/foidlinux/foidlinux ~/foid && cd ~/foid
 ./build-all.sh          # toolchain, kernel, busybox, runit, apps, git, ISO (takes a while)
 ./test-iso.sh           # boot it in QEMU (FOID_UEFI=1 for UEFI)
 ```
